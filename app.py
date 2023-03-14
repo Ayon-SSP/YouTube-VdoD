@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from pytube import YouTube
+import os
 
 app = Flask(__name__)
 
@@ -13,8 +14,8 @@ def download():
     try:
         yt = YouTube(url)
         stream = yt.streams.get_highest_resolution()
-        stream.download()
-        return f"Video '{yt.title}' downloaded successfully!"
+        filename = stream.download()
+        return send_file(filename, as_attachment=True)
     except Exception as e:
         return f"Error downloading video: {e}"
 

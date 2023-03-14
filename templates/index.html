@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Download YouTube Video</title>
+    <meta charset="UTF-8">
+    <title>YouTube Downloader</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Download YouTube Video</h1>
-    <form action="{{ url_for('download') }}" method="POST">
-        <input type="text" name="url" placeholder="Enter YouTube video URL" required>
-        <button type="submit">Download</button>
-    </form>
+    <div class="container">
+        <h1>YouTube Downloader</h1>
+        <form action="/download" method="POST">
+            <input type="text" name="url" placeholder="Enter YouTube URL">
+            <button type="submit">Download</button>
+        </form>
+    </div>
 </body>
 </html>
-    
